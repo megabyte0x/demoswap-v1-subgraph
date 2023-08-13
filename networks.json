@@ -1,0 +1,8 @@
+{
+  "base-testnet": {
+    "GraphKitExchange": {
+      "address": "0xc4b9cC943928c79e177d91DbeC7124850501E4cB",
+      "startBlock": 8372079
+    }
+  }
+}

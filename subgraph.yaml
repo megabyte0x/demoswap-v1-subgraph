@@ -1,0 +1,42 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: GraphKitExchange
+    network: base-testnet
+    source:
+      address: "0xc4b9cC943928c79e177d91DbeC7124850501E4cB"
+      abi: GraphKitExchange
+      startBlock: 8372079
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - GraphKitExchange__ETHToTokenSwap
+        - GraphKitExchange__LiquidityAdded
+        - GraphKitExchange__LiquidityRemoved
+        - GraphKitExchange__TokenToETHSwap
+        - GraphKitExchange__TokenToTokenSwap
+        - Transfer
+      abis:
+        - name: GraphKitExchange
+          file: ./abis/GraphKitExchange.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: GraphKitExchange__ETHToTokenSwap(indexed address,uint256,uint256)
+          handler: handleGraphKitExchange__ETHToTokenSwap
+        - event: GraphKitExchange__LiquidityAdded(indexed address,uint256,uint256,uint256)
+          handler: handleGraphKitExchange__LiquidityAdded
+        - event: GraphKitExchange__LiquidityRemoved(indexed address,uint256,uint256,uint256)
+          handler: handleGraphKitExchange__LiquidityRemoved
+        - event: GraphKitExchange__TokenToETHSwap(indexed address,uint256,uint256)
+          handler: handleGraphKitExchange__TokenToETHSwap
+        - event: GraphKitExchange__TokenToTokenSwap(indexed address,indexed address,indexed address)
+          handler: handleGraphKitExchange__TokenToTokenSwap
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/graph-kit-exchange.ts
