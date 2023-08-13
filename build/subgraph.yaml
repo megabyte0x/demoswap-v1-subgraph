@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: GraphKitExchange
@@ -23,7 +23,7 @@ dataSources:
         - Transfer
       abis:
         - name: GraphKitExchange
-          file: ./abis/GraphKitExchange.json
+          file: GraphKitExchange/abis/GraphKitExchange.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,uint256)
           handler: handleApproval
@@ -39,7 +39,7 @@ dataSources:
           handler: handleGraphKitExchange__TokenToTokenSwap
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-      file: ./src/graph-kit-exchange.ts
+      file: GraphKitExchange/GraphKitExchange.wasm
   - kind: ethereum
     name: Factory
     network: base-testnet
@@ -55,8 +55,8 @@ dataSources:
         - Factory__ExchangeCreated
       abis:
         - name: Factory
-          file: ./abis/Factory.json
+          file: Factory/abis/Factory.json
       eventHandlers:
         - event: Factory__ExchangeCreated(indexed address,indexed address)
           handler: handleFactory__ExchangeCreated
-      file: ./src/factory.ts
+      file: Factory/Factory.wasm

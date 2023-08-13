@@ -3,6 +3,9 @@
     "GraphKitExchange": {
       "address": "0xc4b9cC943928c79e177d91DbeC7124850501E4cB",
       "startBlock": 8372079
+    },
+    "Factory": {
+      "address": "0x1f3667a9513276bcb888a34607ea82416f882c85"
     }
   }
 }
